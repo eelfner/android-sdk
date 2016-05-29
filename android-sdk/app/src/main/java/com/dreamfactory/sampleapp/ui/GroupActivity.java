@@ -202,7 +202,8 @@ public class GroupActivity extends Activity {
             sessionToken = PrefUtil.getString(getApplicationContext(), AppConstants.SESSION_TOKEN);
             // only need to send the name in body
             // we don't have a group ID yet, so we can't provide one here
-            requestString = "{\"name\":\"" + name + "\"}";
+            String requestStringEntity = "{\"name\":\"" + name + "\"}";
+            requestString =  "{\"resource\" : [ " + requestStringEntity + " ] }";
         }
 
         @Override
