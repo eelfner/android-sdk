@@ -334,7 +334,8 @@ public class GroupActivity extends Activity {
             //requestString = "{\"name\":\"" + record.name + "\",\"id\":" +
                     //record.id + "}";
             // form is { "id": id, "name": name }
-            requestString = ApiInvoker.serialize(record);
+            String requestStringEntity = ApiInvoker.serialize(record);
+            requestString = "{\"resource\":" + requestStringEntity + "}";
 
             applicationApiKey = AppConstants.API_KEY;
             sessionToken = PrefUtil.getString(getApplicationContext(), AppConstants.SESSION_TOKEN);
