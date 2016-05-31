@@ -1,6 +1,8 @@
 package dfapi;
 
 
+import android.util.Log;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
@@ -157,7 +159,12 @@ public class ApiInvoker {
         }
 
         // build the full path, form is: <instance url>/api/v2/<service name>/<end point>?[a params]
-        String url = host + path + b.toString();
+        String pathAndQuery = path + b.toString();
+        String url = host + pathAndQuery;
+        Log.v("HTTP", method + ":" + pathAndQuery);
+        if (body != null) {
+            Log.v("HTTP", "Body: " + body);
+        }
 
         HashMap<String, String> headers = new HashMap<>();
 
